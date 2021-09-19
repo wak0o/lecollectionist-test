@@ -1,0 +1,26 @@
+<div>
+  <h1>Shops</h1>
+
+  <h2><%= link_to "Add", new_shop_path %></h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @shops.each do |shop| %>
+        <tr>
+          <td><%= shop.name %></td>
+          <td><%= link_to "Edit", edit_shop_path(shop) %></td>
+          <td><%= link_to "Delete", shop_path(shop), method: :delete %></td>
+          <td><%= link_to "See", shop_path(shop) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
