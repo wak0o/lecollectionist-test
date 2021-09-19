@@ -1,6 +1,5 @@
 class OpeningTime < ApplicationRecord
   validates :week_day, :open_at, :close_at, presence: true
-  validates :open_at, :close_at, uniqueness: true
   validates :week_day, inclusion: { in: 1..7, message: "%{value} is not a valid day" }
   validate :opens_before_closes 
 

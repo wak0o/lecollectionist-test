@@ -7,9 +7,20 @@
   <% Date::DAYNAMES.rotate(Date::DAYNAMES.index(Time.now.strftime("%A"))).each_with_index do |day, index| %>
 
     <% if @shop.opening_times.find_by(week_day: index) %>
-      <p><%= @shop.opening_times.find_by(week_day: index).day_of_week %> <%= @shop.opening_times.find_by(week_day: index).open_at.strftime('%H:%M') %>-<%= @shop.opening_times.find_by(week_day: index).close_at.strftime('%H:%M') %></p>
+
+      <p>
+        <%= @shop.opening_times.find_by(week_day: index).day_of_week %>
+        
+        <% @shop.opening_times.where(week_day: index).each do |opening_time| %>
+         <%= opening_time.open_at.strftime('%H:%M') %>-<%= opening_time.close_at.strftime('%H:%M') %>
+        <% end %>
+
+      </p>
+
     <% else %>
+
       <p><%= day %> Fermé</p>
+
     <% end %>
 
   <% end %>
