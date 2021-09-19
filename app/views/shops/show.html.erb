@@ -1,1 +1,17 @@
 <h1><%= @shop.name %></h1>
+
+<% if @shop.opening_times %>
+
+  <h2>Horaires:</h2>
+
+  <% Date::DAYNAMES.rotate(Date::DAYNAMES.index(Time.now.strftime("%A"))).each_with_index do |day, index| %>
+
+    <% if @shop.opening_times.find_by(week_day: index) %>
+      <p><%= @shop.opening_times.find_by(week_day: index).day_of_week %> <%= @shop.opening_times.find_by(week_day: index).open_at.strftime('%H:%M') %>-<%= @shop.opening_times.find_by(week_day: index).close_at.strftime('%H:%M') %></p>
+    <% else %>
+      <p><%= day %> Fermé</p>
+    <% end %>
+
+  <% end %>
+
+<% end %>

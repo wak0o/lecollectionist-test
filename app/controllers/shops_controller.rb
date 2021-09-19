@@ -10,6 +10,7 @@ class ShopsController < ApplicationController
 
   def new
     @shop = Shop.new
+    @shop.opening_times.build
   end
 
   def create
@@ -45,7 +46,10 @@ class ShopsController < ApplicationController
   end
 
   def shop_params
-    params.require(:shop).permit(:name)
+    params.require(:shop).permit(
+      :name,
+      opening_times_attributes: [:id, :open_at, :close_at, :week_day, :_destroy]
+    )
   end
 
 end

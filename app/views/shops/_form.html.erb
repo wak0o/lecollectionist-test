@@ -1,5 +1,30 @@
 <%= simple_form_for @shop do |f| %>
   <%= f.input :name %>
   <br>
+
+  <% Date::DAYNAMES.each_with_index do |day, index| %>
+      <%= f.fields_for :opening_times, f.object.opening_times.find_or_initialize_by(week_day: index) do |opening_time| %>
+        <tr>
+          <td>
+            <%= opening_time.hidden_field :week_day %>
+            <div class="checkbox">
+              <%= opening_time.check_box :_destroy, {checked: opening_time.object.persisted?}, "0", "1" %>
+              <%= opening_time.label :_destroy, day %>
+            </div>
+          </td>
+          <td>
+            <%= opening_time.label :open_at, class: "visually-hidden" %>
+            <%= opening_time.time_field :open_at %>
+          </td>
+          <td>
+           <%= opening_time.label :close_at, class: "visually-hidden" %>
+           <%= opening_time.time_field :close_at %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+
+    <br>
+
   <%= f.button :submit %>
 <% end %>
