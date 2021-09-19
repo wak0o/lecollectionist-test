@@ -3,6 +3,7 @@
 <% if @shop.opening_times %>
 
   <h2>Horaires:</h2>
+  <h3><%= link_to "Add Opening Time", new_shop_opening_time_path(@shop) %></h3>
 
   <% Date::DAYNAMES.rotate(Date::DAYNAMES.index(Time.now.strftime("%A"))).each_with_index do |day, index| %>
 
@@ -14,7 +15,6 @@
         <% @shop.opening_times.where(week_day: index).each do |opening_time| %>
          <%= opening_time.open_at.strftime('%H:%M') %>-<%= opening_time.close_at.strftime('%H:%M') %>
         <% end %>
-
       </p>
 
     <% else %>

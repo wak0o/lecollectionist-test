@@ -1,0 +1,6 @@
+<%= simple_form_for @opening_time, url: shop_opening_times_path do |f| %>
+  <%= f.input :week_day, collection: [[1, 'Monday'], [2, 'Tuesday'], [3, 'Wednesday'], [4, 'Thursday'], [5, 'Friday'], [6, 'Saturday'], [7, 'Sunday']], label_method: :second, value_method: :first %>
+  <%= f.input :open_at %>
+  <%= f.input :close_at %>
+  <%= f.button :submit %>
+<% end %>

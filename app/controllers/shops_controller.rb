@@ -10,7 +10,6 @@ class ShopsController < ApplicationController
 
   def new
     @shop = Shop.new
-    @shop.opening_times.build
   end
 
   def create
