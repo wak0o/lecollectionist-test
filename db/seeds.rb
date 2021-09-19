@@ -17,3 +17,5 @@ p "Creating Shop"
   shop = Shop.create(name: Faker::Restaurant.unique.name)
 end
 
+p "Shop created"
+
