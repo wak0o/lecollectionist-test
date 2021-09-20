@@ -9,7 +9,7 @@
 
     <% if @shop.opening_times.find_by(week_day: index) %>
 
-      <p class=<%= @week_days.first == @shop.opening_times.find_by(week_day: index).week_day ? 'active' : '' %>>
+      <p class=<%= @week_days.first == day ? 'active' : '' %>>
         <%= I18n.t('date.day_names')[@shop.opening_times.find_by(week_day: index).week_day] %>
         
         <% @shop.opening_times.where(week_day: index).order(open_at: :asc).each do |opening_time| %>

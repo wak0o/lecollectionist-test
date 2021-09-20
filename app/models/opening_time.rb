@@ -12,7 +12,7 @@ class OpeningTime < ApplicationRecord
   protected
 
   def availability
-    errors.add(:close_at, "Time range already exist") if OpeningTime.where("open_at <= :a AND :b <= close_at AND shop_id = :c", a: close_at, b: open_at, c: shop.id).exists?
+    errors.add(:close_at, "Time range already exist") if OpeningTime.where("open_at <= :a AND :b <= close_at AND week_day = :c AND shop_id = :d", a: close_at, b: open_at, c: week_day, d: shop.id).exists?
   end
 
   def opens_before_closes
