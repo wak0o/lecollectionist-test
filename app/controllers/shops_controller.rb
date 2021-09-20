@@ -6,6 +6,7 @@ class ShopsController < ApplicationController
   end
 
   def show
+    @week_days = Date::DAYNAMES.rotate(Time.now.wday)
   end
 
   def new

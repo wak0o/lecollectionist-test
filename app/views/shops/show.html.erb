@@ -5,21 +5,21 @@
   <h2>Horaires:</h2>
   <h3><%= link_to "", new_shop_opening_time_path(@shop), class: "fas fa-plus-circle" %></h3>
 
-  <% Date::DAYNAMES.rotate(Date::DAYNAMES.index(Time.now.strftime("%A"))).each_with_index do |day, index| %>
+  <% @week_days.each_with_index do |day, index| %>
 
     <% if @shop.opening_times.find_by(week_day: index) %>
 
-      <p>
+      <p class=<%= @week_days.first == @shop.opening_times.find_by(week_day: index).week_day ? 'active' : '' %>>
         <%= I18n.t('date.day_names')[@shop.opening_times.find_by(week_day: index).week_day] %>
         
-        <% @shop.opening_times.where(week_day: index).each do |opening_time| %>
+        <% @shop.opening_times.where(week_day: index).order(open_at: :asc).each do |opening_time| %>
          <%= opening_time.open_at.strftime('%H:%M') %>-<%= opening_time.close_at.strftime('%H:%M') %> <%= link_to "", shop_opening_time_path(opening_time), method: :delete, class: "fas fa-trash" %>
         <% end %>
       </p>
 
     <% else %>
 
-      <p><%= I18n.t('date.day_names')[index] %> Fermé</p>
+      <p class=<%= @week_days.first == day ? 'active' : '' %>><%= I18n.t('date.day_names')[index] %> Fermé</p>
 
     <% end %>
 
