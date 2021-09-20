@@ -1,13 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  open_at: 2021-09-19 14:46:18
-  close_at: 2021-09-19 14:46:18
+  open_at: 2021-09-19 09:00:00
+  close_at: 2021-09-19 17:00:00
   week_day: 1
   shop: one
 
 two:
-  open_at: 2021-09-19 14:46:18
-  close_at: 2021-09-19 14:46:18
-  week_day: 1
+  open_at: 2021-09-19 09:00:00
+  close_at: 2021-09-19 17:00:00
+  week_day: 2
   shop: two
