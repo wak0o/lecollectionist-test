@@ -10,7 +10,7 @@
     <% if @shop.opening_times.find_by(week_day: index) %>
 
       <p>
-        <%= @shop.opening_times.find_by(week_day: index).day_of_week %>
+        <%= I18n.t('date.day_names')[@shop.opening_times.find_by(week_day: index).week_day] %>
         
         <% @shop.opening_times.where(week_day: index).each do |opening_time| %>
          <%= opening_time.open_at.strftime('%H:%M') %>-<%= opening_time.close_at.strftime('%H:%M') %> <%= link_to "", shop_opening_time_path(opening_time), method: :delete, class: "fas fa-trash" %>
@@ -19,7 +19,7 @@
 
     <% else %>
 
-      <p><%= day %> Fermé</p>
+      <p><%= I18n.t('date.day_names')[index] %> Fermé</p>
 
     <% end %>
 
