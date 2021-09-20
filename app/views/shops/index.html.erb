@@ -1,7 +1,7 @@
 <div>
   <h1>Shops</h1>
 
-  <h2><%= link_to "Add", new_shop_path %></h2>
+  <h2><%= link_to "", new_shop_path, class: "fas fa-plus-circle" %></h2>
 
   <table>
     <thead>
@@ -16,9 +16,9 @@
       <% @shops.each do |shop| %>
         <tr>
           <td><%= shop.name %></td>
-          <td><%= link_to "Edit", edit_shop_path(shop) %></td>
-          <td><%= link_to "Delete", shop_path(shop), method: :delete %></td>
-          <td><%= link_to "See", shop_path(shop) %></td>
+          <td><%= link_to "", edit_shop_path(shop), class: "fas fa-edit" %></td>
+          <td><%= link_to "", shop_path(shop), method: :delete, class: "fas fa-trash" %></td>
+          <td><%= link_to "", shop_path(shop), class: "fas fa-eye" %></td>
         </tr>
       <% end %>
     </tbody>

@@ -1,6 +1,6 @@
 class OpeningTimesController < ApplicationController
-  before_action :set_opening_time, only: [:edit, :update, :destroy]
-  before_action :set_shop, only: [:create, :destroy]
+  before_action :set_opening_time, only: [:destroy]
+  before_action :set_shop, only: [:create]
 
   def new
     @opening_time = OpeningTime.new
@@ -16,21 +16,9 @@ class OpeningTimesController < ApplicationController
     end
   end
 
-  def edit
-    
-  end
-
-  def update
-    if @opening_time.update(opening_time_params)
-      redirect_to shop_path(@opening_time.shop)
-    else
-      render :edit
-    end
-  end
-
   def destroy
     @opening_time.destroy
-    redirect_to shop_path(@shop)
+    redirect_to shop_path(@opening_time.shop)
   end
 
   private
@@ -40,7 +28,7 @@ class OpeningTimesController < ApplicationController
   end
 
   def set_opening_time
-    @opening_time = OpeningTime.find(params[:id])
+    @opening_time = OpeningTime.find(params[:shop_id])
   end
 
   def opening_time_params
