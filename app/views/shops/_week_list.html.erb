@@ -1,0 +1,24 @@
+<% @week.each do |day| %>
+
+  <% if @shop.is_open(day.wday) %>
+
+    <p class=<%= @week.first.wday == day.wday ? 'active' : '' %>>
+    
+      <%= I18n.t('date.day_names')[day.wday] %>
+      
+      <% @shop.opening_times.schedule_of_day(day.wday).each do |opening_time| %>
+        <%= opening_time.opening_hours %>
+        <%= link_to "", shop_opening_time_path(opening_time), method: :delete, class: "fas fa-trash" %>
+      <% end %>
+
+    </p>
+
+  <% else %>
+    
+    <p class=<%= @week.first.wday == day.wday ? 'active' : '' %>>
+      <%= I18n.t('date.day_names')[day.wday] %> <%= I18n.t('opening_time.close') %>
+    </p>
+
+  <% end %>
+
+<% end %>
