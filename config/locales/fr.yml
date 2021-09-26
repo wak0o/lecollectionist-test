@@ -1,3 +1,6 @@
 fr:
   date:
     day_names: [Dimanche, Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi]
+  opening_time:
+    schedule: 'Horaires'
+    close: 'Fermé'

@@ -1,28 +1,11 @@
 <h1><%= @shop.name %></h1>
 
+<h3><%= link_to "", new_shop_opening_time_path(@shop), class: "fas fa-plus-circle" %></h3>
+
 <% if @shop.opening_times %>
 
-  <h2>Horaires:</h2>
-  <h3><%= link_to "", new_shop_opening_time_path(@shop), class: "fas fa-plus-circle" %></h3>
+  <h2><%= I18n.t('opening_time.schedule') %>:</h2>
 
-  <% @week_days.each_with_index do |day, index| %>
-
-    <% if @shop.opening_times.find_by(week_day: index) %>
-
-      <p class=<%= @week_days.first == day ? 'active' : '' %>>
-        <%= I18n.t('date.day_names')[@shop.opening_times.find_by(week_day: index).week_day] %>
-        
-        <% @shop.opening_times.where(week_day: index).order(open_at: :asc).each do |opening_time| %>
-         <%= opening_time.open_at.strftime('%H:%M') %>-<%= opening_time.close_at.strftime('%H:%M') %> <%= link_to "", shop_opening_time_path(opening_time), method: :delete, class: "fas fa-trash" %>
-        <% end %>
-      </p>
-
-    <% else %>
-
-      <p class=<%= @week_days.first == day ? 'active' : '' %>><%= I18n.t('date.day_names')[index] %> Fermé</p>
-
-    <% end %>
-
-  <% end %>
+  <%= render 'week_list' %>
 
 <% end %>

@@ -8,7 +8,10 @@ class OpeningTimesController < ApplicationController
 
   def create
     @opening_time = OpeningTime.new(opening_time_params)
+
     @opening_time.shop = @shop
+    @opening_time.week_day_name = @opening_time.day_of_week
+    
     if @opening_time.save
       redirect_to shop_path(@shop)
     else
