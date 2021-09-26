@@ -5,8 +5,8 @@
 The setups steps expect following tools installed on the system.
 
 - Github
-- Ruby [3.0.0](https://github.com/organization/project-name/blob/master/.ruby-version#L1)
-- Rails [6.1.4](https://github.com/organization/project-name/blob/master/Gemfile#L12)
+- Ruby [3.0.0](https://github.com/wak0o/lecollectionist-test/blob/main/.ruby-version)
+- Rails [6.1.4](https://github.com/wak0o/lecollectionist-test/blob/main/README.md)
 
 ## Install
 
